@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<base href="/discover-struts2" />
+</head>
+
+<body>
+	<p>Welcome to Struts2</p>
+
+	<ul>
+		<li><a href="/discover-struts2/hello/Hello.action">Go to Hello Action</a></li>
+		<li><a href="/discover-struts2/hello/GetJSON.action">Go to JSON Action</a></li>
+	</ul>
+
+	<ul>
+		<li><input id="get" type="button" value="GET Action" /></li>
+		<li><input id="post" type="button" value="POST Action" /></li>
+	</ul>
+
+
+
+	<script src="/discover-struts2/jquery-1.11.2.js"></script>
+	<script type="text/JavaScript">
+		$('#get').on('click', function() {
+			$.ajax({
+				url : "/discover-struts2/hello/GetJSON",
+				type : "GET",
+				contentType : "application/json;chaset=UTF-8",
+				data : {
+					"string1" : "Hell"
+				},
+				dataType : "json"
+			});
+		});
+		$('#post').on('click', function() {
+			$.ajax({
+				url : "/discover-struts2/hello/GetJSON",
+				type : "POST",
+				contentType : "application/json;chaset=UTF-8",
+				data : JSON.stringify({
+					"string1" : "Hell"
+				}),
+				dataType : "json"
+			});
+		});
+	</script>
+</body>
+</html>

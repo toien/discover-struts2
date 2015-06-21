@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+
+    <package name="parent" namespace="/" extends="json-default">
+		<interceptors>
+			<interceptor name="postJson" class="com.toien.discover.base.web.PostJsonInterceptor" />
+			
+			<interceptor-stack name="discoverStruts2Stack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="postJson"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="discoverStruts2Stack"></default-interceptor-ref>
+		
+		<global-results>
+			<result type="json">
+				<param name="root">jsonResponse</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="contentType">application/json</param>
+			</result>
+		</global-results>
+		
+		
+    </package>
+
+    <!-- Add addition packages and configuration here. -->
+    <package name="hello" namespace="/hello" extends="parent">
+		<action name="Hello" class="com.toien.discover.hello.action.HelloAction">
+			<result>/WEB-INF/hello/HelloWorld.jsp</result>
+		</action>
+		
+		<action name="GetJSON" class="com.toien.discover.hello.action.JSONAction">
+			<!-- 
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="json">
+				<param name="enableSMD">true</param>
+			</interceptor-ref>
+			 -->
+			
+		</action>
+
+		<!-- Add additional "example" package actions here. -->
+
+	</package>
+</struts>
