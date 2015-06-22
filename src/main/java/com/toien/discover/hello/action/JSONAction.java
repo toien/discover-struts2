@@ -38,7 +38,7 @@ import com.toien.discover.base.web.JsonResponse;
 /**
  * <code>Set welcome message.</code>
  */
-public class JSONAction extends BaseAction implements ParameterAware, ServletRequestAware {
+public class JSONAction extends BaseAction {
 
 	/**
 	 * 
@@ -136,19 +136,5 @@ public class JSONAction extends BaseAction implements ParameterAware, ServletReq
 
 	public void setStringarray1(String[] stringarray1) {
 		this.stringarray1 = stringarray1;
-	}
-
-	public void setParameters(Map<String, String[]> parameters) {
-
-		for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
-			System.out.println(entry.getKey() + "|" + entry.getValue());
-		}
-
-	}
-
-	@Override
-	public void setServletRequest(HttpServletRequest request) {
-		System.out.println(request.getMethod());
-		
 	}
 }

@@ -1,7 +1,10 @@
 package com.toien.discover.base.web;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -9,7 +12,7 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.PreResultListener;
 
-public class BaseAction extends ActionSupport implements ServletRequestAware {
+public class BaseAction extends ActionSupport implements RequestAware, ServletRequestAware {
 
 	/**
 	 * 
@@ -21,7 +24,7 @@ public class BaseAction extends ActionSupport implements ServletRequestAware {
 
 	protected JsonResponse jsonResponse;
 	
-	protected HttpServletRequest request;
+	protected HttpServletRequest servletRequest;
 	
 
 	public BaseAction() {
@@ -52,10 +55,19 @@ public class BaseAction extends ActionSupport implements ServletRequestAware {
 
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
-		this.request = request;
+		
+		System.out.println("Set Servlet request to Action.....");
+		
+		this.servletRequest = request;
 	}
 	
 	public boolean isAjaxRequest() {
-		return "XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"));
+		return "XMLHttpRequest".equalsIgnoreCase(servletRequest.getHeader("X-Requested-With"));
+	}
+
+	@Override
+	public void setRequest(Map<String, Object> request) {
+		System.out.println("Set request to Action.....");
+		
 	}
 }

@@ -19,7 +19,7 @@
 		<default-interceptor-ref name="discoverStruts2Stack"></default-interceptor-ref>
 		
 		<global-results>
-			<result type="json">
+			<result name="json" type="json">
 				<param name="root">jsonResponse</param>
 				<param name="excludeNullProperties">true</param>
 				<param name="contentType">application/json</param>
