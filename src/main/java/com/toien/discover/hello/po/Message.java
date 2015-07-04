@@ -1,6 +1,8 @@
 package com.toien.discover.hello.po;
 
 
+
+
 public class Message {
 	public static enum Status {
 		NOT_PROCESSED(0, "未处理"), DELETED(1, "已删除"), PUNISHED(2, "已惩罚");
@@ -43,7 +45,6 @@ public class Message {
 		}
 		
 	}
-	
 	private Status status;
 
 	public Status getStatus() {

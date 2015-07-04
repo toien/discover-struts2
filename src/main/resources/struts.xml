@@ -3,69 +3,55 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
-    <constant name="struts.devMode" value="true"/>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
 
-	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
 	<constant name="struts.allowed.action.names" value="[ a-zA-Z0-9._!/\-@]*" />
-	<!-- <constant name="struts.patternMatcher" value="regex" /> -->
-	
+
 	<constant name="struts.action.extension" value=",do,action,ver"></constant>
 
-    <package name="parent" namespace="/" extends="json-default">
+	<package name="parent" namespace="/" extends="json-default">
 		<interceptors>
-			<interceptor name="postJson" class="com.toien.discover.base.web.PostJsonInterceptor" />
-			
-			<interceptor-stack name="discoverStruts2Stack">
+			<interceptor name="postJson"
+				class="com.toien.discover.base.web.PostJsonInterceptor" />
+
+			<interceptor-stack name="discoverStruts2">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="postJson"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		
-		<default-interceptor-ref name="discoverStruts2Stack"></default-interceptor-ref>
-		
+
+		<default-interceptor-ref name="discoverStruts2"></default-interceptor-ref>
+
 		<global-results>
 			<result name="json" type="json">
 				<param name="root">jsonResponse</param>
-				<param name="excludeNullProperties">true</param>
 				<param name="contentType">application/json</param>
 			</result>
 			<result name="success">
-				
+				/WEB-INF/hello/HelloWorld.jsp
 			</result>
 		</global-results>
-		
-		
-    </package>
-
-    <!-- Add addition packages and configuration here. -->
-    <package name="hello" namespace="/hello" extends="parent">
-		<action name="Hello" class="com.toien.discover.hello.web.action.HelloAction">
-			<result>/WEB-INF/hello/HelloWorld	.jsp</result>
-		</action>
-		
-		<action name="GetJSON" class="com.toien.discover.hello.web.action.JSONAction">
-			<!-- 
-			<interceptor-ref name="defaultStack" />
-			<interceptor-ref name="json">
-				<param name="enableSMD">true</param>
-			</interceptor-ref>
-			 -->
-			
-		</action>
-
-		<!-- Add additional "example" package actions here. -->
 
 	</package>
-	
+
+	<!-- Add addition packages and configuration here. -->
+	<package name="hello" namespace="/hello" extends="parent">
+		<action name="Hello" class="com.toien.discover.hello.web.action.HelloAction">
+		</action>
+
+		<action name="GetJSON" class="com.toien.discover.hello.web.action.JSONAction">
+		</action>
+	</package>
+
 	<package name="client" namespace="/promo" extends="parent">
 		<action name="/*/ver.*" class="com.toien.discover.hello.web.action.HelloAction">
 			<param name="client">{1}</param>
 			<param name="version">{2}</param>
-			<result>/WEB-INF/hello/HelloWorld.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="enumtest" namespace="/enumtest" extends="parent">
 		<action name="*" class="com.toien.discover.hello.web.action.EnumAction">
 		</action>

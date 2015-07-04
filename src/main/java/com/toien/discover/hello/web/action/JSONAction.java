@@ -26,12 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ParameterAware;
-import org.apache.struts2.interceptor.ServletRequestAware;
-
-import com.opensymphony.xwork2.Action;
 import com.toien.discover.base.web.BaseAction;
 import com.toien.discover.base.web.JsonResponse;
 

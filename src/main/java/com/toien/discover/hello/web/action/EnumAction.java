@@ -1,12 +1,14 @@
 package com.toien.discover.hello.web.action;
 
-import com.opensymphony.xwork2.ActionSupport;
 import com.toien.discover.base.web.BaseAction;
 import com.toien.discover.base.web.JsonResponse;
 import com.toien.discover.hello.po.Message.Status;
 
 /**
- * <code>Set welcome message.</code>
+ * demonstrate how enum type communicate with front end
+ * 
+ * @author toien
+ *
  */
 public class EnumAction extends BaseAction {
 

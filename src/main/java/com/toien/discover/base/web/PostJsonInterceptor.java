@@ -19,6 +19,7 @@ public class PostJsonInterceptor extends JSONInterceptor {
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
         
+		// do nothing if request is "GET"
         if("GET".equals(request.getMethod())) {
         	return invocation.invoke();
         }
