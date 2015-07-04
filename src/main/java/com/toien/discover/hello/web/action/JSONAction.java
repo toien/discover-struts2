@@ -19,7 +19,7 @@
  * under the License.
  */
 
-package com.toien.discover.hello.action;
+package com.toien.discover.hello.web.action;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,7 +77,8 @@ public class JSONAction extends BaseAction {
 		response.setResult(string1);
 		
 		setJsonResponse(response);
-		return Action.SUCCESS;
+//		return Action.SUCCESS;
+		return JSON;
 	}
 
 	// no getter method, will not include in the JSON

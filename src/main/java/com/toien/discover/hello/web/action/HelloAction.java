@@ -19,7 +19,7 @@
  * under the License.
  */
 
-package com.toien.discover.hello.action;
+package com.toien.discover.hello.web.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -40,7 +40,35 @@ public class HelloAction extends ActionSupport {
         return SUCCESS;
     }
 
-    /**
+	private String client;
+	private String version;
+	private String x;
+	
+    public String getX() {
+		return x;
+	}
+
+	public void setX(String x) {
+		this.x = x;
+	}
+
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	/**
      * Provide default valuie for Message property.
      */
     public static final String MESSAGE = "HelloWorld.message";

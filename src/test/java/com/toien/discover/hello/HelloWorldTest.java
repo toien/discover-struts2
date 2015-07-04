@@ -22,7 +22,7 @@
 package com.toien.discover.hello;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.toien.discover.hello.action.HelloAction;
+import com.toien.discover.hello.web.action.HelloAction;
 
 import org.apache.struts2.StrutsTestCase;
 

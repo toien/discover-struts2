@@ -9,6 +9,16 @@ public class JsonResponse {
 
 	private String hint;
 	
+	public static JsonResponse sucess(Object result) {
+		
+		JsonResponse resp = new JsonResponse();
+		
+		resp.setCode(100);
+		resp.setResult(result);
+		resp.setSuccessful(true);
+		
+		return resp;
+	}
 	
 	public Integer getCode() {
 		return code;
